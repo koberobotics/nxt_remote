@@ -1,0 +1,41 @@
+<launch>
+
+    <!-- ======== Parameters ======== -->
+    <arg name="navigation" default="true" />
+    <arg name="manipulation" default="true" />
+    <arg name="remote" default="true" />
+    <arg name="video" default="true" />
+
+    <node name="remote_manager" pkg="remote_manager" type="remote_manager">
+
+    <!-- Navigation Mode Only -->
+    <group if="$(arg navigation)">
+
+        <node pkg="nvt_core" type="launch_delayed.sh" args="5 roslaunch nvt_core main.launch" name="nvt_navigation" output="screen" />
+            <remap from="naviton/mobile_controller/cmd_vel" to="new_name"/>
+        </node>
+
+        <!-- Remote Mode Only -->
+        <group if="$(arg navigation)">
+            
+            <node pkg="nvt_core" type="launch_delayed.sh" args="5 roslaunch nvt_core main.launch" name="nvt_navigation" output="screen" />
+                <remap from="naviton/mobile_controller/cmd_vel" to="new_name"/>
+            </node>
+
+            <!-- Video Mode Only -->
+            <!-- <group if="$(arg video)">
+                <node pkg="nvt_core" type="launch_delayed.sh" args="5 roslaunch nvt_core main.launch" name="nvt_navigation" output="screen" />
+            </group> -->
+
+        </group>
+
+    </group>
+
+    <!-- Manipulation Mode Only -->
+    <group if="$(arg manipulation)">
+
+        <node pkg="nvt_core" type="launch_delayed.sh" args="5 roslaunch nvt_manipulation main.launch" name="nvt_manipulation" output="screen" />
+
+    </group>
+
+</launch>
