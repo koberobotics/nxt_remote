@@ -1,0 +1,6 @@
+frequency : 10
+remote_vel_topic  : /nxt/remote_cmd_vel
+auto__vel_topic   : /naviton/mobile_base_controller/cmd_vel
+choice_vel_topic  : /naviton/mobile_base_controller/cmd_vel
+
+emote_button_topic : /nxt/remote_button

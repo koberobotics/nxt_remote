@@ -118,7 +118,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -151,6 +151,11 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+# Remote
+set(HEADERS include/nxt_remote/nxt_remote.h)
+add_executable(nxt_remote_node src/nxt_remote src/node/nxt_remote_node)
+target_link_libraries(nxt_remote_node ${catkin_LIBRARIES})
 
 #############
 ## Install ##

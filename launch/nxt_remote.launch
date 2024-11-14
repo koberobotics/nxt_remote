@@ -1,0 +1,10 @@
+<launch>
+    <arg name="param_file" default="$(find nxt_remote)/config/nxt_remote.yaml" />
+
+    <group ns="net_remote">
+        <node pkg="nxt_remote" type="nxt_remote_node" name="nxt_remote_node" output="screen">
+            <rosparam command="load" file="$(arg param_file)" />
+        </node>
+    </group>
+
+</launch>

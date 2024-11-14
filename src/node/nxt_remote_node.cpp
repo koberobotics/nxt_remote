@@ -15,12 +15,12 @@ int main(int argc, char **argv)
    ros::Rate loop_rate(frequency);
 
 
-   AStarPlanner planner(nh, pn);
+   Nxt_Remote nxt(nh, pn);
 
 
    while(ros::ok())
    {
-       planner.publish();
+       nxt.update();
        ros::spinOnce();
        loop_rate.sleep();
    }
